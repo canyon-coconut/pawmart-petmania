@@ -37,11 +37,14 @@ document.querySelectorAll('[data-stars]').forEach(el => { el.innerHTML = starsHT
 
 let filter='all', query='', sortBy='featured';
 const cart = new Map();
+const favs = new Set();
+try{ (JSON.parse(localStorage.getItem('pawmart_favs')||'[]')).forEach(id=>favs.add(id)); }catch(e){}
+let favOnly = false;
 try{ (JSON.parse(localStorage.getItem('pawmart_cart')||'[]')).forEach(([k,v])=>cart.set(k,v)); }catch(e){}
 const grid = document.getElementById('grid');
 
 function visibleProducts(){
-  let list = PRODUCTS.filter(p => (filter==='all' || p.cat===filter) && p.name.toLowerCase().includes(query));
+  let list = PRODUCTS.filter(p => (!favOnly || favs.has(p.id)) && (filter==='all' || p.cat===filter) && p.name.toLowerCase().includes(query));
   if(sortBy==='low') list = [...list].sort((a,b)=>a.price-b.price);
   if(sortBy==='high') list = [...list].sort((a,b)=>b.price-a.price);
   if(sortBy==='rating') list = [...list].sort((a,b)=>b.rating-a.rating);
@@ -51,7 +54,7 @@ function cardHTML(p){
   const badge = p.was ? `<span class="badge sale">Sale!</span>` : (p.badge ? `<span class="badge">${p.badge}</span>` : '');
   return `
    <article class="pcard">
-     <span class="fav" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20.2S3.4 15.3 2.3 10.6C1.5 7.2 3.7 4.5 6.8 4.5c2 0 3.7 1.1 5.2 3.1 1.5-2 3.2-3.1 5.2-3.1 3.1 0 5.3 2.7 4.5 6.1C20.6 15.3 12 20.2 12 20.2z"/></svg></span>
+     <button type="button" class="fav${favs.has(p.id)?' on':''}" data-fav="${p.id}" aria-pressed="${favs.has(p.id)}" aria-label="Save to favourites"><svg viewBox="0 0 24 24"><path d="M12 20.2S3.4 15.3 2.3 10.6C1.5 7.2 3.7 4.5 6.8 4.5c2 0 3.7 1.1 5.2 3.1 1.5-2 3.2-3.1 5.2-3.1 3.1 0 5.3 2.7 4.5 6.1C20.6 15.3 12 20.2 12 20.2z"/></svg></button>
      <a class="ph" href="product.html?id=${p.id}" aria-label="${p.name}"><img src="${p.img}" alt="${p.alt}" onerror="imgFallback(this)">${badge}</a>
      <div class="pname"><a href="product.html?id=${p.id}">${p.name}</a></div>
      <div class="stars">${starsHTML(p.rating)}<span>${p.rating} (${p.reviews})</span></div>
@@ -62,7 +65,7 @@ function cardHTML(p){
 function render(){
   const list = visibleProducts();
   document.getElementById('resultCount').textContent = list.length + (list.length===1 ? ' product' : ' products');
-  if(!list.length){ grid.innerHTML = '<div class="noresults">No products match your search. Try a different word or category.</div>'; return; }
+  if(!list.length){ grid.innerHTML = favOnly ? '<div class="noresults">No favourites yet. Tap the heart on any product and it will wait for you here.</div>' : '<div class="noresults">No products match your search. Try a different word or category.</div>'; return; }
   grid.innerHTML = list.map(cardHTML).join('');
 }
 function renderFeatured(){
@@ -72,6 +75,13 @@ function renderFeatured(){
   el.innerHTML = [...best, ...rest].slice(0,8).map(cardHTML).join('');
 }
 document.addEventListener('click', e => {
+  const fb = e.target.closest('[data-fav]');
+  if(fb){ const fid = parseInt(fb.dataset.fav);
+    if(favs.has(fid)){ favs.delete(fid); toast('Removed from favourites'); } else { favs.add(fid); toast('Saved to favourites'); }
+    try{ localStorage.setItem('pawmart_favs', JSON.stringify([...favs])); }catch(err){}
+    document.querySelectorAll('[data-fav="'+fid+'"]').forEach(x=>{ x.classList.toggle('on', favs.has(fid)); x.setAttribute('aria-pressed', favs.has(fid)); });
+    if(favOnly && grid) render();
+    return; }
   const b = e.target.closest('[data-add]'); if(!b) return;
   const id = parseInt(b.dataset.add);
   let n = 1;
@@ -85,6 +95,8 @@ if(grid){
   if(_sc){ filter = _sc; document.querySelectorAll('.pill').forEach(el=>el.style.display='none'); }
   const _params = new URLSearchParams(location.search);
   if(_params.get('cat')){ filter = _params.get('cat'); document.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active', x.dataset.filter===filter)); }
+  if(_params.get('fav')){ favOnly = true; }
+  if(location.hash==='#search'){ const _si2 = document.getElementById('search'); if(_si2) setTimeout(()=>_si2.focus(), 60); }
   if(_params.get('q')){ query = _params.get('q').toLowerCase(); const _si = document.getElementById('search'); if(_si) _si.value = _params.get('q'); }
 document.querySelectorAll('[data-filter]').forEach(b => b.addEventListener('click', () => {
   document.querySelectorAll('[data-filter]').forEach(x=>x.classList.remove('active'));
@@ -107,7 +119,7 @@ function setQty(id, qty){ if(qty<=0) cart.delete(id); else cart.set(id, qty); sy
 function syncCart(){
   try{ localStorage.setItem('pawmart_cart', JSON.stringify([...cart])); }catch(e){}
   const t = cartTotals();
-  document.getElementById('cartCount').textContent = t.count;
+  const _cc = document.getElementById('cartCount'); _cc.textContent = t.count; _cc.style.display = t.count ? 'grid' : 'none';
   const box = document.getElementById('drawerItems');
   if(t.count===0){ box.innerHTML = '<div class="emptycart">Your cart is empty.<br>Add something your pet will love.</div>'; }
   else{

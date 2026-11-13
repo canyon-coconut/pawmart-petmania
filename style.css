@@ -424,3 +424,14 @@ footer.site{background:#F5F5F5;color:#42566B}
 /* care services: two wide calm columns instead of four cramped ones */
 .services{grid-template-columns:repeat(2,1fr)}
 @media(max-width:680px){ .services{grid-template-columns:1fr} }
+
+/* toolbar pair: search + sort as one matched set of pills, custom chevron placed dead-centre */
+#search{height:46px;border:1.5px solid #C9D8EA;border-radius:999px;background:#fff;padding:0 20px;font-weight:600;color:var(--navy);min-width:240px}
+#search::placeholder{color:#7A8CA3}
+#search:focus{border-color:#8FB4DC}
+#sort{height:46px;border:1.5px solid #C9D8EA;border-radius:999px;background:#fff url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1.5 6 6.5 11 1.5' fill='none' stroke='%23002842' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat right 16px center;padding:0 40px 0 20px;font-weight:700;color:var(--navy);appearance:none;-webkit-appearance:none;max-width:none}
+#sort:focus{border-color:#8FB4DC}
+/* hero photo: wider column + scaled up from its base so the dog stands taller */
+@media(min-width:681px){ .hero .wrap{grid-template-columns:.95fr 1.05fr} }
+.hero-img.composed{overflow:hidden}
+.hero-img.composed img{transform:scale(1.15);transform-origin:50% 100%}

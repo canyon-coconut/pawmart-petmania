@@ -30,7 +30,7 @@ header.site{background:#fff;position:sticky;top:0;z-index:40;box-shadow:0 2px 14
 nav.mainnav{display:flex;gap:2px;justify-content:center;flex-wrap:nowrap;overflow-x:auto}
 nav.mainnav a{text-decoration:none;font-weight:800;color:var(--ink);padding:10px 13px;font-size:15.5px;border-radius:999px;white-space:nowrap}
 nav.mainnav a:hover{background:var(--sky);color:var(--navy)}
-nav.mainnav a.on{background:var(--sky);color:var(--navy)}
+nav.mainnav a.on{background:transparent;color:var(--navy)}
 .headactions{display:flex;gap:10px;align-items:center}
 .iconbtn{position:relative;width:44px;height:44px;border-radius:14px;background:var(--navy);display:grid;place-items:center;border:none;cursor:pointer;flex:none;transition:.15s}
 .iconbtn:hover{background:var(--navy2)}
@@ -156,7 +156,7 @@ footer.site{background:var(--navy);color:#C7D8EE;margin-top:64px}
 .toolbar .sp{flex:1}
 #search{border:2px solid var(--line);border-radius:999px;padding:10px 18px;font:inherit;font-size:14.5px;min-width:210px;outline:none;background:#F7FAFD}
 #search:focus{border-color:var(--sky2);background:#fff}
-#sort{border:2px solid var(--line);border-radius:999px;padding:10px 14px;font:inherit;font-weight:700;font-size:14.5px;background:#fff;outline:none}
+#sort{flex:0 0 auto;width:auto;max-width:230px;height:44px;border:1.5px solid #C9D8EA;border-radius:14px;padding:0 30px 0 14px;font:inherit;font-weight:700;font-size:14px;color:var(--navy);background:#fff;outline:none;cursor:pointer}
 #resultCount{color:var(--mut);font-weight:700;font-size:14.5px;margin:6px 0 16px}
 .noresults{grid-column:1/-1;text-align:center;padding:50px 20px;color:var(--mut);font-weight:700;background:var(--sky);border-radius:var(--r)}
 
@@ -410,3 +410,17 @@ footer.site{background:#F5F5F5;color:#42566B}
 .hero{min-height:calc(100vh - 116px);min-height:calc(100svh - 116px);display:flex;flex-direction:column;padding-top:26px}
 .hero .wrap{flex:1 1 auto}
 @media(max-width:680px){ .hero{padding-top:18px} .hero-img.composed img{min-height:260px} }
+
+.mainnav a.on::after{transform:scaleX(1)}
+/* reviews: more air */
+.rev-grid{gap:26px}
+.rev{padding:28px 26px}
+.rev blockquote, .rev p{line-height:1.6}
+/* care page services: more air */
+.services{gap:26px}
+.services .svc{padding:30px 28px}
+.services .svc p{line-height:1.6}
+
+/* care services: two wide calm columns instead of four cramped ones */
+.services{grid-template-columns:repeat(2,1fr)}
+@media(max-width:680px){ .services{grid-template-columns:1fr} }

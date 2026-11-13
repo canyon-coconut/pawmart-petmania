@@ -1,5 +1,5 @@
 
-const FALLBACK = 'data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600"><rect width="800" height="600" fill="#E7F1FB"/><g fill="#20365C" opacity="0.55"><ellipse cx="400" cy="330" rx="90" ry="74"/><circle cx="272" cy="252" r="38"/><circle cx="352" cy="206" r="43"/><circle cx="452" cy="200" r="43"/><circle cx="534" cy="248" r="38"/></g><text x="400" y="470" font-family="Georgia,serif" font-size="30" fill="#20365C" text-anchor="middle">PawMart</text></svg>');
+const FALLBACK = 'data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600"><rect width="800" height="600" fill="#B1CDEE"/><g fill="#002842" opacity="0.55"><ellipse cx="400" cy="330" rx="90" ry="74"/><circle cx="272" cy="252" r="38"/><circle cx="352" cy="206" r="43"/><circle cx="452" cy="200" r="43"/><circle cx="534" cy="248" r="38"/></g><text x="400" y="470" font-family="Georgia,serif" font-size="30" fill="#002842" text-anchor="middle">PawMart</text></svg>');
 function imgFallback(el){ el.onerror=null; el.src=FALLBACK; }
 
 const U = id => 'https://images.unsplash.com/' + id + '?auto=format&fit=crop&w=800&q=60';
@@ -23,7 +23,7 @@ const PRODUCTS = [
 ];
 const FREE_OVER = 40, DELIVERY_FEE = 4.99;
 const money = n => '$' + n.toFixed(2);
-const starSVG = f => '<svg width="15" height="15" viewBox="0 0 24 24" fill="' + (f ? '#E8A33D' : '#D8CFBB') + '"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg>';
+const starSVG = f => '<svg width="15" height="15" viewBox="0 0 24 24" fill="' + (f ? '#002842' : '#D5DDE5') + '"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg>';
 function starsHTML(r){ let h=''; for(let i=1;i<=5;i++) h += starSVG(i <= Math.round(r)); return h; }
 document.querySelectorAll('[data-stars]').forEach(el => { el.innerHTML = starsHTML(parseFloat(el.dataset.stars)); });
 
@@ -40,18 +40,15 @@ function visibleProducts(){
   return list;
 }
 function cardHTML(p){
+  const badge = p.was ? `<span class="badge sale">Sale!</span>` : (p.badge ? `<span class="badge">${p.badge}</span>` : '');
   return `
    <article class="pcard">
-     <a class="ph" href="product.html?id=${p.id}" aria-label="${p.name}"><img src="${p.img}" alt="${p.alt}" style="object-position:${p.pos||'50% 50%'}" onerror="imgFallback(this)">${p.badge ? `<span class="badge${p.sale ? ' sale' : ''}">${p.badge}</span>` : (p.was ? `<span class="badge sale">Save ${Math.round((1 - p.price/p.was) * 100)}%</span>` : '')}</a>
-     <div class="pbody">
-       <div class="pcat">${p.catLabel}</div>
-       <div class="pname"><a href="product.html?id=${p.id}">${p.name}</a></div>
-       <div class="stars">${starsHTML(p.rating)}<span>${p.rating} (${p.reviews})</span></div>
-       <div class="prow">
-         <div class="price">${p.was ? `<s>${money(p.was)}</s>` : ''}${money(p.price)}</div>
-         <button class="addbtn" data-add="${p.id}">Add to cart</button>
-       </div>
-     </div>
+     <span class="fav" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20.2S3.4 15.3 2.3 10.6C1.5 7.2 3.7 4.5 6.8 4.5c2 0 3.7 1.1 5.2 3.1 1.5-2 3.2-3.1 5.2-3.1 3.1 0 5.3 2.7 4.5 6.1C20.6 15.3 12 20.2 12 20.2z"/></svg></span>
+     <a class="ph" href="product.html?id=${p.id}" aria-label="${p.name}"><img src="${p.img}" alt="${p.alt}" onerror="imgFallback(this)">${badge}</a>
+     <div class="pname"><a href="product.html?id=${p.id}">${p.name}</a></div>
+     <div class="stars">${starsHTML(p.rating)}<span>${p.rating} (${p.reviews})</span></div>
+     <div class="price">${p.was ? `<s>${money(p.was)}</s>` : ''}${money(p.price)}</div>
+     <button class="addbtn" data-add="${p.id}">Add to cart</button>
    </article>`;
 }
 function render(){

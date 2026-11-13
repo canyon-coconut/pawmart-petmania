@@ -84,7 +84,7 @@ section.blk.pink{background:var(--pink)}
 .pcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:.15s}
 .pcard:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
 .pcard .ph{position:relative;display:block;background:#fff}
-.pcard .ph img{width:100%;height:210px;object-fit:cover}
+.pcard .ph img{width:100%;height:220px;object-fit:contain;padding:12px;mix-blend-mode:multiply}
 .badge{position:absolute;top:12px;left:12px;background:var(--navy);color:#fff;font-size:12px;font-weight:800;padding:5px 11px;border-radius:999px}
 .badge.sale{background:var(--coral)}
 .pbody{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
@@ -101,6 +101,16 @@ section.blk.pink{background:var(--pink)}
 .addbtn:hover{background:var(--coral-d)}
 .addbtn.added{background:var(--navy)}
 .addbtn.bigadd{font-size:17px;padding:14px 30px}
+
+.tile.small{min-height:215px}
+
+/* grooming banner */
+.groom{background:var(--pink);border-radius:26px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;box-shadow:var(--shadow)}
+.groom .gtx{padding:40px 42px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+.groom .gtx h2{font-size:34px;font-weight:800;margin-bottom:10px}
+.groom .gtx p{color:#4A3A44;font-weight:600;margin-bottom:20px;max-width:44ch}
+.groom .gtx .from{font-weight:800;color:var(--navy);margin-bottom:16px}
+.groom img{width:100%;height:100%;min-height:300px;object-fit:cover;object-position:72% 50%}
 
 /* services */
 .services{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
@@ -171,7 +181,7 @@ footer.site{background:var(--navy2);color:#C7D8EE;margin-top:64px}
 .crumbs{padding:20px 0 4px;font-weight:700;color:var(--mut);font-size:14.5px}
 .crumbs a{color:var(--navy);text-decoration:none}
 .pwrap{display:grid;grid-template-columns:1fr 1fr;gap:38px;padding:18px 0 10px}
-.pimg{width:100%;height:480px;object-fit:cover;border-radius:26px;border:1px solid var(--line)}
+.pimg{width:100%;height:480px;object-fit:contain;background:#F7FAFD;padding:18px;border-radius:26px;border:1px solid var(--line);mix-blend-mode:multiply}
 .pinfo h1{font-size:36px;font-weight:800;margin:6px 0 8px}
 .pprice{font-family:'Baloo 2',cursive;font-size:32px;font-weight:800;color:var(--navy)}
 .pprice s{color:var(--mut);font-size:21px;margin-right:10px;font-weight:600}
@@ -198,7 +208,7 @@ footer.site{background:var(--navy2);color:#C7D8EE;margin-top:64px}
 .dhead button{border:none;background:var(--sky);width:38px;height:38px;border-radius:50%;font-size:17px;cursor:pointer;color:var(--navy);font-weight:800}
 #drawerItems{flex:1;overflow-y:auto;padding:16px 22px;display:flex;flex-direction:column;gap:14px}
 .citem{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:start;background:#F7FAFD;border-radius:16px;padding:10px}
-.citem img{width:64px;height:64px;object-fit:cover;border-radius:12px}
+.citem img{width:64px;height:64px;object-fit:contain;background:#fff;border-radius:12px;mix-blend-mode:multiply}
 .citem .nm{font-weight:800;font-size:14.5px;line-height:1.3}
 .citem .pr{color:var(--navy);font-weight:800;font-size:14.5px;margin:2px 0 6px}
 .citem .qty button{width:30px;height:32px;font-size:16px}
@@ -259,6 +269,9 @@ footer.site{background:var(--navy2);color:#C7D8EE;margin-top:64px}
   .hero-img img{height:300px}
   .hero h1{font-size:36px}
   .tiles,.blog,.rev-grid{grid-template-columns:1fr}
+  .groom{grid-template-columns:1fr}
+  .groom .gtx{padding:28px 24px}
+  .groom img{min-height:230px}
   .grid{grid-template-columns:repeat(2,1fr)}
   .pcard .ph img{height:150px}
   .pwrap{grid-template-columns:1fr}

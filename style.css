@@ -478,3 +478,13 @@ footer.site{background:#F5F5F5;color:#42566B}
 #toast .toastact{background:var(--yellow);color:var(--navy);border:none;border-radius:999px;padding:7px 14px;font:inherit;font-weight:800;font-size:13.5px;cursor:pointer;flex:none}
 #toast .toastact:hover{background:#FFE14D}
 .headactions a.iconbtn.fav-on{background:var(--coral)}
+
+/* in-cart stepper on product cards: persistent state, no accidental duplicates */
+.addslot{display:block}
+.incart{display:flex;align-items:center;justify-content:space-between;gap:6px;background:var(--navy);border-radius:999px;padding:5px;min-height:48px}
+.incart span{color:#fff;font-weight:800;font-size:14.5px}
+.incart button{width:36px;height:36px;flex:none;border:none;border-radius:999px;background:#fff;color:var(--navy);font-size:19px;font-weight:800;cursor:pointer;display:grid;place-items:center;line-height:1}
+.incart button:hover{background:var(--yellow)}
+
+/* cart line removal: slide, fade and collapse instead of vanishing */
+.citem.leaving{opacity:0;transform:translateX(30px);height:0!important;margin:0!important;padding-top:0!important;padding-bottom:0!important;border-color:transparent;overflow:hidden;transition:opacity .26s ease,transform .26s ease,height .26s ease,margin .26s ease,padding .26s ease}

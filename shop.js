@@ -50,6 +50,18 @@ function visibleProducts(){
   if(sortBy==='rating') list = [...list].sort((a,b)=>b.rating-a.rating);
   return list;
 }
+function addSlotHTML(id){
+  const q = cart.get(id) || 0;
+  if(!q) return '<button class="addbtn" data-add="' + id + '">Add to cart</button>';
+  return '<span class="incart"><button type="button" data-dec-card="' + id + '" aria-label="One less">\u2212</button><span>In cart \u00b7 ' + q + '</span><button type="button" data-inc-card="' + id + '" aria-label="One more">+</button></span>';
+}
+function refreshCardStates(){
+  document.querySelectorAll('.addslot').forEach(el => { el.innerHTML = addSlotHTML(parseInt(el.dataset.slot)); });
+  document.querySelectorAll('[data-add-main]').forEach(b => {
+    const id = parseInt(b.dataset.add); const q = cart.get(id) || 0;
+    b.textContent = q ? ('In your cart \u00b7 ' + q + ' — add more') : 'Add to cart';
+  });
+}
 function cardHTML(p){
   const badge = p.was ? `<span class="badge sale">Sale!</span>` : (p.badge ? `<span class="badge">${p.badge}</span>` : '');
   return `
@@ -59,7 +71,7 @@ function cardHTML(p){
      <div class="pname"><a href="product.html?id=${p.id}">${p.name}</a></div>
      <div class="stars">${starsHTML(p.rating)}<span>${p.rating} (${p.reviews})</span></div>
      <div class="price">${p.was ? `<s>${money(p.was)}</s>` : ''}${money(p.price)}</div>
-     <button class="addbtn" data-add="${p.id}">Add to cart</button>
+     <span class="addslot" data-slot="${p.id}">${addSlotHTML(p.id)}</span>
    </article>`;
 }
 function render(){
@@ -82,6 +94,8 @@ document.addEventListener('click', e => {
     document.querySelectorAll('[data-fav="'+fid+'"]').forEach(x=>{ x.classList.toggle('on', favs.has(fid)); x.setAttribute('aria-pressed', favs.has(fid)); });
     if(favOnly && grid) render();
     return; }
+  const stp = e.target.closest('[data-inc-card],[data-dec-card]');
+  if(stp){ const sid = parseInt(stp.dataset.incCard || stp.dataset.decCard); setQty(sid, (cart.get(sid)||0) + (stp.hasAttribute('data-inc-card') ? 1 : -1)); return; }
   const b = e.target.closest('[data-add]'); if(!b) return;
   const id = parseInt(b.dataset.add);
   let n = 1;
@@ -89,9 +103,7 @@ document.addEventListener('click', e => {
   cart.set(id, (cart.get(id)||0)+n); syncCart();
   const prod = PRODUCTS.find(x=>x.id===id);
   toast((prod ? prod.name : 'Item') + ' added to your cart', {label:'View cart', fn:openCart});
-  flyToCart(b.closest('.pcard')?.querySelector('img') || document.querySelector('.pimg'));
-  const old = b.textContent; b.textContent = 'Added \u2713'; b.classList.add('added');
-  setTimeout(()=>{ b.textContent = old; b.classList.remove('added'); }, 2000);
+  if(!b.hasAttribute('data-add-main')){ const old = b.textContent; b.textContent = 'Added \u2713'; b.classList.add('added'); setTimeout(()=>{ b.textContent = old; b.classList.remove('added'); }, 900); }
 });
 if(grid){
   const _sc = document.body.dataset.shopcat;
@@ -148,15 +160,24 @@ function syncCart(){
   document.getElementById('grandTotal').textContent = money(t.total);
   const pct = Math.min(100, t.sub/FREE_OVER*100);
   document.getElementById('freeFill').style.width = pct + '%';
-  document.getElementById('freeNote').textContent = t.sub>=FREE_OVER ? 'You have free delivery.' : ('Add ' + money(FREE_OVER - t.sub) + ' more for free delivery.');
+  refreshCardStates();
+    document.getElementById('freeNote').textContent = t.sub>=FREE_OVER ? 'You have free delivery.' : ('Add ' + money(FREE_OVER - t.sub) + ' more for free delivery.');
   document.getElementById('goCheckout').disabled = t.count===0;
   document.getElementById('goCheckout').style.opacity = t.count===0 ? .5 : 1;
+}
+function animateRemove(id, el){
+  const item = el ? el.closest('.citem') : null;
+  if(!item || matchMedia('(prefers-reduced-motion: reduce)').matches){ setQty(id, 0); return; }
+  item.style.height = item.offsetHeight + 'px';
+  item.style.pointerEvents = 'none';
+  requestAnimationFrame(()=>{ requestAnimationFrame(()=>item.classList.add('leaving')); });
+  setTimeout(()=> setQty(id, 0), 280);
 }
 document.getElementById('drawerItems').addEventListener('click', e => {
   const inc = e.target.closest('[data-inc]'), dec = e.target.closest('[data-dec]'), rm = e.target.closest('[data-rm]');
   if(inc) setQty(parseInt(inc.dataset.inc), (cart.get(parseInt(inc.dataset.inc))||0)+1);
-  if(dec){ const id=parseInt(dec.dataset.dec); setQty(id, (cart.get(id)||0)-1); }
-  if(rm) setQty(parseInt(rm.dataset.rm), 0);
+  if(dec){ const id=parseInt(dec.dataset.dec); if((cart.get(id)||0) <= 1) animateRemove(id, dec); else setQty(id, cart.get(id)-1); }
+  if(rm) animateRemove(parseInt(rm.dataset.rm), rm);
 });
 
 const drawer = document.getElementById('drawer'), overlay = document.getElementById('overlay'), modal = document.getElementById('modal');
@@ -225,20 +246,6 @@ function toast(msg, act){
   if(act){ const b = document.createElement('button'); b.type='button'; b.className='toastact'; b.textContent = act.label; b.addEventListener('click', ()=>{ t.classList.remove('show'); act.fn(); }); t.appendChild(b); }
   t.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(()=>t.classList.remove('show'), act ? 4200 : 2600);
 }
-function flyToCart(img){
-  try{
-    if(!img || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const cartBtn = document.getElementById('openCart'); if(!cartBtn) return;
-    const r1 = img.getBoundingClientRect(), r2 = cartBtn.getBoundingClientRect();
-    if(!r1.width) return;
-    const c = img.cloneNode();
-    c.style.cssText = 'position:fixed;z-index:999;pointer-events:none;border-radius:14px;margin:0;left:'+r1.left+'px;top:'+r1.top+'px;width:'+r1.width+'px;height:'+r1.height+'px;object-fit:cover;';
-    document.body.appendChild(c);
-    const dx = (r2.left + r2.width/2) - (r1.left + r1.width/2), dy = (r2.top + r2.height/2) - (r1.top + r1.height/2);
-    const anim = c.animate([{transform:'translate(0,0) scale(1)', opacity:.95},{transform:'translate('+dx+'px,'+dy+'px) scale(.06)', opacity:.35}], {duration:680, easing:'cubic-bezier(.3,.6,.4,1)'});
-    anim.onfinish = ()=>{ c.remove(); const cc = document.getElementById('cartCount'); if(cc) cc.animate([{transform:'scale(1)'},{transform:'scale(1.5)'},{transform:'scale(1)'}], {duration:360, easing:'ease-out'}); };
-  }catch(e){}
-}
 
 if(grid) render(); syncCart();
 
@@ -280,6 +287,7 @@ function renderProduct(){
     if(others.length<4) others = [...others, ...PRODUCTS.filter(x=>x.cat!==p.cat && x.id!==p.id)].slice(0,4);
     rel.innerHTML = others.slice(0,4).map(cardHTML).join('');
   }
+  refreshCardStates();
 }
 renderFeatured();
 renderProduct();

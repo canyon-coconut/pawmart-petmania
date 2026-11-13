@@ -236,3 +236,12 @@ renderFeatured();
 renderProduct();
 function renderDeals(){ document.querySelectorAll('#dealsGrid, #dealsGridHome').forEach(el => { const list = PRODUCTS.filter(p=>p.was); el.innerHTML = (el.id==='dealsGridHome' ? list.slice(0,4) : list).map(cardHTML).join(''); }); }
 renderDeals();
+
+/* scroll reveal */
+document.documentElement.classList.add('js');
+(function(){
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold:.12});
+  function watch(root){ root.querySelectorAll('.rv:not(.in)').forEach(function(el){ io.observe(el); }); }
+  watch(document);
+  new MutationObserver(function(ms){ ms.forEach(function(m){ m.addedNodes.forEach(function(n){ if(n.nodeType===1){ if(n.classList && n.classList.contains('rv')) io.observe(n); watch(n); } }); }); }).observe(document.body, {childList:true, subtree:true});
+})();

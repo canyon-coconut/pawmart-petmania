@@ -381,3 +381,27 @@ footer.site{background:#F5F5F5;color:#42566B}
 .hero-img.cutout .arch{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:94%;height:100%;background:var(--yellow);border-radius:999px 999px 0 0}
 .hero-img.cutout img{position:relative;z-index:2;width:100%;height:480px;object-fit:contain;object-position:bottom center;border-radius:0;box-shadow:none}
 @media(max-width:680px){ .hero-img.cutout img{height:350px} .hero-img.cutout .arch{width:88%} }
+
+/* composed hero photo (generated already fitted inside its arch) */
+.hero{background:#B5D2EE}
+.hero-img.composed{display:flex}
+.hero-img.composed img{flex:1 1 auto;width:100%;height:auto;min-height:480px;object-fit:cover;object-position:50% 100%;border-radius:0;box-shadow:none}
+@media(max-width:680px){ .hero-img.composed img{height:300px} }
+
+/* motion: scroll reveal + hover life (our answer to the reference's animations) */
+.js .rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){ .js .rv{opacity:1;transform:none;transition:none} }
+.pcard{transition:transform .35s ease,box-shadow .35s ease}
+.pcard:hover{transform:translateY(-5px);box-shadow:0 18px 36px rgba(0,40,66,.14)}
+.pcard .ph img{transition:transform .5s ease}
+.pcard:hover .ph img{transform:scale(1.05)}
+.trend .blob img{transition:transform .6s ease}
+.trend:hover .blob img{transform:scale(1.06)}
+.petitem img{transition:transform .35s ease}
+.petitem:hover img{transform:scale(1.04)}
+.btn{transition:background .25s ease,transform .15s ease}
+.btn:active{transform:scale(.97)}
+.mainnav a{position:relative}
+.mainnav a::after{content:"";position:absolute;left:14px;right:14px;bottom:5px;height:3px;border-radius:2px;background:var(--yellow);transform:scaleX(0);transition:transform .3s ease}
+.mainnav a:hover::after{transform:scaleX(1)}

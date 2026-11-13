@@ -405,3 +405,8 @@ footer.site{background:#F5F5F5;color:#42566B}
 .mainnav a{position:relative}
 .mainnav a::after{content:"";position:absolute;left:14px;right:14px;bottom:5px;height:3px;border-radius:2px;background:var(--yellow);transform:scaleX(0);transition:transform .3s ease}
 .mainnav a:hover::after{transform:scaleX(1)}
+
+/* hero fits exactly one screen (header + hero + delivery strip = viewport height) */
+.hero{min-height:calc(100vh - 116px);min-height:calc(100svh - 116px);display:flex;flex-direction:column;padding-top:26px}
+.hero .wrap{flex:1 1 auto}
+@media(max-width:680px){ .hero{padding-top:18px} .hero-img.composed img{min-height:260px} }

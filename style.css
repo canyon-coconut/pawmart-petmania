@@ -407,7 +407,7 @@ footer.site{background:#F5F5F5;color:#42566B}
 .mainnav a:hover::after{transform:scaleX(1)}
 
 /* hero fits exactly one screen (header + hero + delivery strip = viewport height) */
-.hero{min-height:calc(100vh - 116px);min-height:calc(100svh - 116px);display:flex;flex-direction:column;padding-top:26px}
+.hero{min-height:calc(100vh - 159px);min-height:calc(100svh - 159px);display:flex;flex-direction:column;padding-top:26px}
 .hero .wrap{flex:1 1 auto}
 @media(max-width:680px){ .hero{padding-top:18px} .hero-img.composed img{min-height:260px} }
 
@@ -503,3 +503,16 @@ section.blk.aboutstrip{padding:56px 0}
 .blogsec .rmore{transition:color .2s ease,transform .2s ease}
 .blogsec .bcard:hover .rmore{color:var(--yellow-d);transform:translateX(3px)}
 @media (prefers-reduced-motion: reduce){ .blogsec .bcard,.blogsec .bcard img,.blogsec .rmore{transition:none} .blogsec .bcard:hover,.blogsec .bcard:hover img{transform:none} }
+
+/* toast: the taller v39 pill outgrew the old 80px hide offset and peeked at the bottom — hide by its own height, fully invisible and click-through */
+#toast{transform:translate(-50%,calc(100% + 48px));opacity:0;visibility:hidden;pointer-events:none;transition:transform .28s ease,opacity .28s ease,visibility 0s linear .28s}
+#toast.show{transform:translate(-50%,0);opacity:1;visibility:visible;pointer-events:auto;transition:transform .28s ease,opacity .28s ease}
+
+/* top bar: address, hours and a tap-to-call phone on every page (checklist bone) */
+.topbar{background:var(--navy);color:#DCE9F7;font-size:13.5px;font-weight:700}
+.topin{display:flex;justify-content:space-between;align-items:center;gap:14px;padding-top:7px;padding-bottom:7px}
+.tb-right{display:inline-flex;align-items:center;gap:18px}
+.tb-phone{color:#fff;text-decoration:none;font-weight:800;display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.tb-phone svg{width:14px;height:14px;fill:none;stroke:var(--yellow);stroke-width:2;stroke-linejoin:round}
+.tb-phone:hover{color:var(--yellow)}
+@media(max-width:680px){ .tb-left{display:none} .topin{justify-content:center} }

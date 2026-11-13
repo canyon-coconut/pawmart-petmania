@@ -236,7 +236,8 @@ function newsSubmit(e){
   var msg=document.getElementById('newsMsg');
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){ msg.style.display='block'; msg.textContent='Please enter a valid email address.'; return false; }
   document.getElementById('newsForm').style.display='none';
-  msg.style.display='block'; msg.textContent='Thank you — you are on the list. First tips email arrives at the start of next month.';
+  msg.style.display='block'; try{ localStorage.setItem('pawmart_news', em); }catch(err){}
+  msg.textContent='Thank you — you are on the list.';
   return false;
 }
 function toast(msg, act){

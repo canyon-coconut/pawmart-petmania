@@ -488,3 +488,18 @@ footer.site{background:#F5F5F5;color:#42566B}
 
 /* cart line removal: slide, fade and collapse instead of vanishing */
 .citem.leaving{opacity:0;transform:translateX(30px);height:0!important;margin:0!important;padding-top:0!important;padding-bottom:0!important;border-color:transparent;overflow:hidden;transition:opacity .26s ease,transform .26s ease,height .26s ease,margin .26s ease,padding .26s ease}
+
+/* home rhythm: separate the grooming banner and Springfield strip, alternate the layout */
+section.blk.aboutstrip{padding:56px 0}
+.aboutstrip .inner{gap:44px}
+.aboutstrip .about-photo{order:-1;height:280px}
+@media(max-width:680px){ section.blk.aboutstrip{padding:40px 0} .aboutstrip .about-photo{order:0;height:230px} }
+
+/* blog cards: hover life — lift, deeper shadow, photo zoom, Read More nudges */
+.blogsec .bcard{transition:transform .28s ease,box-shadow .28s ease}
+.blogsec .bcard:hover,.blogsec .bcard:focus-visible{transform:translateY(-6px);box-shadow:0 18px 38px rgba(0,40,66,.14)}
+.blogsec .bcard img{transition:transform .5s ease}
+.blogsec .bcard:hover img,.blogsec .bcard:focus-visible img{transform:scale(1.05)}
+.blogsec .rmore{transition:color .2s ease,transform .2s ease}
+.blogsec .bcard:hover .rmore{color:var(--yellow-d);transform:translateX(3px)}
+@media (prefers-reduced-motion: reduce){ .blogsec .bcard,.blogsec .bcard img,.blogsec .rmore{transition:none} .blogsec .bcard:hover,.blogsec .bcard:hover img{transform:none} }

@@ -20,14 +20,14 @@ const PRODUCTS = [
   {id:14, name:'Leather Collar & Leash Set', cat:'dogs', catLabel:'Dogs', price:16.50, rating:4.9, reviews:158, badge:'', img:'images/p14.jpg', alt:'Brown leather dog collar and leash set', desc:"A matching collar and lead in real brown leather with brass fittings that will not rust. The leather softens with use and lasts for years.", specs:[["Collar", "Adjustable 30\u201345 cm"], ["Leash", "120 cm"], ["Material", "Leather, brass"], ["For", "Medium dogs"]]},
   {id:15, name:'Pet Drinking Fountain', cat:'care', catLabel:'Care & Home', price:34.99, was:44.99, rating:4.7, reviews:231, badge:'Bestseller', img:'images/p15.jpg', alt:'White pet drinking water fountain with running water', desc:"A quiet 2-litre fountain that keeps water moving, so cats and dogs drink more and the water stays fresh. One filter included \u2014 change it monthly.", specs:[["Capacity", "2 litres"], ["Pump", "Quiet, USB"], ["Filter", "1 included"], ["For", "Cats & small dogs"]]},
   {id:16, name:'Harbor & Hound Wild Salmon Oil — 250ml', cat:'care', catLabel:'Care & Home', price:14.25, rating:4.8, reviews:119, badge:'', img:'images/p16.jpg', alt:'Harbor & Hound amber pump bottle of wild salmon oil', desc:"Wild salmon oil for skin and coat \u2014 a pump or two over food each day gives omega-3s that show as a glossier coat and less itching.", specs:[["Size", "250 ml"], ["Use", "1\u20132 pumps daily"], ["Source", "Wild salmon"], ["For", "Dogs & cats"]]},
-{id:17, name:'Northpaw Salmon & Sweet Potato Kibble 4kg', cat:'dogs', catLabel:'Dogs', price:27.99, was:32.99, rating:4.7, reviews:58, badge:'', img:'images/p17.jpg', alt:'Northpaw green bag of salmon and sweet potato kibble with a bowl of kibble', desc:"Salmon-first kibble with sweet potato and peas — the one we reach for when a dog needs protein without chicken. A firm favourite with the itchy-coat crowd.", specs:[["Weight", "4 kg"], ["Main protein", "Salmon"], ["Life stage", "Adult"]]},
-{id:18, name:'Squeaky Plush Duck Toy', cat:'dogs', catLabel:'Dogs', price:7.99, rating:4.6, reviews:84, badge:'', img:'images/p18.jpg', alt:'Yellow corduroy plush duck dog toy with an orange beak', desc:"A soft corduroy duck with a squeaker that isn't annoying — tested. For dogs who carry their toys from room to room.", specs:[["Material", "Corduroy plush"], ["Squeaker", "Yes"], ["Care", "Machine wash cold"]]},
-{id:19, name:'Northpaw Tuna Pâté Wet Food — 12 Pack', cat:'cats', catLabel:'Cats', price:15.75, was:18.50, rating:4.8, reviews:97, badge:'', img:'images/p19.jpg', alt:'Stack of Northpaw tuna pâté tins, the top one open', desc:"Smooth tuna pâté in single-serve tins. The food our fussiest counter critics — Pepper included — have never once walked away from.", specs:[["Pack size", "12 × 85 g"], ["Main protein", "Tuna"], ["Life stage", "Adult"]]},
-{id:20, name:'Catnip Mouse Trio', cat:'cats', catLabel:'Cats', price:6.25, rating:4.7, reviews:143, badge:'', img:'images/p20.jpg', alt:'Three plush catnip mice in grey, beige and pink', desc:"Three sturdy plush mice with real catnip inside and string tails that survive being carried around by them.", specs:[["Pack size", "3 mice"], ["Filling", "Catnip"], ["Material", "Plush fabric"]]},
-{id:21, name:'Elevated Ceramic Cat Bowl', cat:'cats', catLabel:'Cats', price:13.99, rating:4.8, reviews:66, badge:'', img:'images/p21.jpg', alt:'White ceramic cat bowl on a bamboo stand', desc:"A raised ceramic bowl on a bamboo stand — easier on necks and whiskers, and heavy enough not to travel across the floor.", specs:[["Material", "Ceramic + bamboo"], ["Capacity", "350 ml"], ["Care", "Bowl is dishwasher safe"]]},
-{id:22, name:'Harbor & Hound Paw Balm — 60ml', cat:'care', catLabel:'Care & Home', price:9.75, was:12.25, rating:4.9, reviews:112, badge:'', img:'images/p22.jpg', alt:'Harbor & Hound amber jar of paw balm', desc:"For dry, cracked paws after winter pavements and summer runs. Lick-safe, unscented, and a little goes a long way.", specs:[["Size", "60 ml"], ["Use", "Paws & nose"], ["Scent", "Unscented"]]},
-{id:23, name:'Gentle Ear Cleaning Wipes — 50 Pack', cat:'care', catLabel:'Care & Home', price:8.99, rating:4.6, reviews:49, badge:'', img:'images/p23.jpg', alt:'Harbor & Hound resealable pouch of ear cleaning wipes', desc:"Soft wipes for weekly ear clean-ups — no bottles, no wrestling. Gentle enough for cats, big enough for spaniel ears.", specs:[["Pack size", "50 wipes"], ["Use", "Ears"], ["Alcohol", "None"]]},
-{id:24, name:'Calming Lavender Grooming Spray — 250ml', cat:'care', catLabel:'Care & Home', price:11.50, rating:4.7, reviews:73, badge:'', img:'images/p24.jpg', alt:'Harbor & Hound amber spray bottle of calming grooming spray', desc:"A light lavender spray for brush-outs between baths. Keeps coats fresh and makes grooming a calmer job for everyone.", specs:[["Size", "250 ml"], ["Use", "Coat spray"], ["Scent", "Lavender"]]}
+{id:17, name:'Northpaw Salmon & Sweet Potato Kibble 4kg', cat:'dogs', catLabel:'Dogs', price:27.99, was:32.99, rating:4.7, reviews:58, badge:'', img:'images/p17w.jpg', alt:'Northpaw green bag of salmon and sweet potato kibble with a bowl of kibble', desc:"Salmon-first kibble with sweet potato and peas — the one we reach for when a dog needs protein without chicken. A firm favourite with the itchy-coat crowd.", specs:[["Weight", "4 kg"], ["Main protein", "Salmon"], ["Life stage", "Adult"]]},
+{id:18, name:'Squeaky Plush Duck Toy', cat:'dogs', catLabel:'Dogs', price:7.99, rating:4.6, reviews:84, badge:'', img:'images/p18w.jpg', alt:'Yellow corduroy plush duck dog toy with an orange beak', desc:"A soft corduroy duck with a squeaker that isn't annoying — tested. For dogs who carry their toys from room to room.", specs:[["Material", "Corduroy plush"], ["Squeaker", "Yes"], ["Care", "Machine wash cold"]]},
+{id:19, name:'Northpaw Tuna Pâté Wet Food — 12 Pack', cat:'cats', catLabel:'Cats', price:15.75, was:18.50, rating:4.8, reviews:97, badge:'', img:'images/p19w.jpg', alt:'Stack of Northpaw tuna pâté tins, the top one open', desc:"Smooth tuna pâté in single-serve tins. The food our fussiest counter critics — Pepper included — have never once walked away from.", specs:[["Pack size", "12 × 85 g"], ["Main protein", "Tuna"], ["Life stage", "Adult"]]},
+{id:20, name:'Catnip Mouse Trio', cat:'cats', catLabel:'Cats', price:6.25, rating:4.7, reviews:143, badge:'', img:'images/p20w.jpg', alt:'Three plush catnip mice in grey, beige and pink', desc:"Three sturdy plush mice with real catnip inside and string tails that survive being carried around by them.", specs:[["Pack size", "3 mice"], ["Filling", "Catnip"], ["Material", "Plush fabric"]]},
+{id:21, name:'Elevated Ceramic Cat Bowl', cat:'cats', catLabel:'Cats', price:13.99, rating:4.8, reviews:66, badge:'', img:'images/p21w.jpg', alt:'White ceramic cat bowl on a bamboo stand', desc:"A raised ceramic bowl on a bamboo stand — easier on necks and whiskers, and heavy enough not to travel across the floor.", specs:[["Material", "Ceramic + bamboo"], ["Capacity", "350 ml"], ["Care", "Bowl is dishwasher safe"]]},
+{id:22, name:'Harbor & Hound Paw Balm — 60ml', cat:'care', catLabel:'Care & Home', price:9.75, was:12.25, rating:4.9, reviews:112, badge:'', img:'images/p22w.jpg', alt:'Harbor & Hound amber jar of paw balm', desc:"For dry, cracked paws after winter pavements and summer runs. Lick-safe, unscented, and a little goes a long way.", specs:[["Size", "60 ml"], ["Use", "Paws & nose"], ["Scent", "Unscented"]]},
+{id:23, name:'Gentle Ear Cleaning Wipes — 50 Pack', cat:'care', catLabel:'Care & Home', price:8.99, rating:4.6, reviews:49, badge:'', img:'images/p23w.jpg', alt:'Harbor & Hound resealable pouch of ear cleaning wipes', desc:"Soft wipes for weekly ear clean-ups — no bottles, no wrestling. Gentle enough for cats, big enough for spaniel ears.", specs:[["Pack size", "50 wipes"], ["Use", "Ears"], ["Alcohol", "None"]]},
+{id:24, name:'Calming Lavender Grooming Spray — 250ml', cat:'care', catLabel:'Care & Home', price:11.50, rating:4.7, reviews:73, badge:'', img:'images/p24w.jpg', alt:'Harbor & Hound amber spray bottle of calming grooming spray', desc:"A light lavender spray for brush-outs between baths. Keeps coats fresh and makes grooming a calmer job for everyone.", specs:[["Size", "250 ml"], ["Use", "Coat spray"], ["Scent", "Lavender"]]}
 ];
 const FREE_OVER = 40, DELIVERY_FEE = 4.99;
 const money = n => '$' + n.toFixed(2);
@@ -86,16 +86,25 @@ document.addEventListener('click', e => {
   const id = parseInt(b.dataset.add);
   let n = 1;
   if(b.hasAttribute('data-add-main')){ const q = document.getElementById('pQty'); if(q) n = Math.max(1, parseInt(q.value)||1); }
-  cart.set(id, (cart.get(id)||0)+n); syncCart(); toast('Added to cart');
+  cart.set(id, (cart.get(id)||0)+n); syncCart();
+  const prod = PRODUCTS.find(x=>x.id===id);
+  toast((prod ? prod.name : 'Item') + ' added to your cart', {label:'View cart', fn:openCart});
+  flyToCart(b.closest('.pcard')?.querySelector('img') || document.querySelector('.pimg'));
   const old = b.textContent; b.textContent = 'Added \u2713'; b.classList.add('added');
-  setTimeout(()=>{ b.textContent = old; b.classList.remove('added'); }, 1200);
+  setTimeout(()=>{ b.textContent = old; b.classList.remove('added'); }, 2000);
 });
 if(grid){
   const _sc = document.body.dataset.shopcat;
   if(_sc){ filter = _sc; document.querySelectorAll('.pill').forEach(el=>el.style.display='none'); }
   const _params = new URLSearchParams(location.search);
   if(_params.get('cat')){ filter = _params.get('cat'); document.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active', x.dataset.filter===filter)); }
-  if(_params.get('fav')){ favOnly = true; }
+  if(_params.get('fav')){ favOnly = true;
+    document.title = 'Your favourites \u2014 PawMart';
+    const _h1 = document.querySelector('.pagehead h1'); if(_h1) _h1.textContent = 'Your favourites';
+    const _hp = document.querySelector('.pagehead p'); if(_hp) _hp.textContent = 'Everything you have hearted, in one place. Tap a heart again to take it off the list.';
+    document.querySelectorAll('.mainnav a').forEach(a=>a.classList.remove('on'));
+    const _hb = document.querySelector('a[aria-label="Your favourites"]'); if(_hb) _hb.classList.add('fav-on');
+  }
   if(location.hash==='#search'){ const _si2 = document.getElementById('search'); if(_si2) setTimeout(()=>_si2.focus(), 60); }
   if(_params.get('q')){ query = _params.get('q').toLowerCase(); const _si = document.getElementById('search'); if(_si) _si.value = _params.get('q'); }
 document.querySelectorAll('[data-filter]').forEach(b => b.addEventListener('click', () => {
@@ -209,7 +218,27 @@ function newsSubmit(e){
   msg.style.display='block'; msg.textContent='Thank you — you are on the list. First tips email arrives at the start of next month.';
   return false;
 }
-function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('show'), 1800); }
+function toast(msg, act){
+  const t = document.getElementById('toast');
+  t.innerHTML = '';
+  const span = document.createElement('span'); span.textContent = msg; t.appendChild(span);
+  if(act){ const b = document.createElement('button'); b.type='button'; b.className='toastact'; b.textContent = act.label; b.addEventListener('click', ()=>{ t.classList.remove('show'); act.fn(); }); t.appendChild(b); }
+  t.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(()=>t.classList.remove('show'), act ? 4200 : 2600);
+}
+function flyToCart(img){
+  try{
+    if(!img || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const cartBtn = document.getElementById('openCart'); if(!cartBtn) return;
+    const r1 = img.getBoundingClientRect(), r2 = cartBtn.getBoundingClientRect();
+    if(!r1.width) return;
+    const c = img.cloneNode();
+    c.style.cssText = 'position:fixed;z-index:999;pointer-events:none;border-radius:14px;margin:0;left:'+r1.left+'px;top:'+r1.top+'px;width:'+r1.width+'px;height:'+r1.height+'px;object-fit:cover;';
+    document.body.appendChild(c);
+    const dx = (r2.left + r2.width/2) - (r1.left + r1.width/2), dy = (r2.top + r2.height/2) - (r1.top + r1.height/2);
+    const anim = c.animate([{transform:'translate(0,0) scale(1)', opacity:.95},{transform:'translate('+dx+'px,'+dy+'px) scale(.06)', opacity:.35}], {duration:680, easing:'cubic-bezier(.3,.6,.4,1)'});
+    anim.onfinish = ()=>{ c.remove(); const cc = document.getElementById('cartCount'); if(cc) cc.animate([{transform:'scale(1)'},{transform:'scale(1.5)'},{transform:'scale(1)'}], {duration:360, easing:'ease-out'}); };
+  }catch(e){}
+}
 
 if(grid) render(); syncCart();
 

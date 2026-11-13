@@ -472,3 +472,9 @@ footer.site{background:#F5F5F5;color:#42566B}
 .fav:hover{transform:scale(1.12)}
 .fav.on svg{fill:var(--coral);stroke:var(--coral)}
 @media(max-width:680px){ #search{flex:1 1 100%;width:100%} #sort{flex:1 1 100%;width:100%} }
+
+/* add-to-cart clarity: richer toast with a View cart action + favourites page marker */
+#toast{display:flex;align-items:center;gap:14px}
+#toast .toastact{background:var(--yellow);color:var(--navy);border:none;border-radius:999px;padding:7px 14px;font:inherit;font-weight:800;font-size:13.5px;cursor:pointer;flex:none}
+#toast .toastact:hover{background:#FFE14D}
+.headactions a.iconbtn.fav-on{background:var(--coral)}

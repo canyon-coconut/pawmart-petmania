@@ -450,3 +450,6 @@ footer.site{background:#F5F5F5;color:#42566B}
 .blogsec .btag{font-size:11.5px}
 .blogsec .rmore{font-size:14.5px;font-weight:700;text-decoration:none;margin-top:12px}
 .blogsec .rmore::after{content:" ›"}
+
+/* about strip: photo taken back out — clean centred text column instead */
+.aboutstrip .inner{display:block;max-width:780px;margin:0 auto;text-align:center}

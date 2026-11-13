@@ -29,7 +29,7 @@ header.site{background:#fff;position:sticky;top:0;z-index:40;box-shadow:0 2px 14
 .logo .lname em{font-style:normal;color:var(--coral)}
 nav.mainnav{display:flex;gap:2px;justify-content:center;flex-wrap:nowrap;overflow-x:auto}
 nav.mainnav a{text-decoration:none;font-weight:800;color:var(--ink);padding:10px 13px;font-size:15.5px;border-radius:999px;white-space:nowrap}
-nav.mainnav a:hover{background:var(--sky);color:var(--navy)}
+nav.mainnav a:hover{background:transparent;color:var(--navy)}
 nav.mainnav a.on{background:transparent;color:var(--navy)}
 .headactions{display:flex;gap:10px;align-items:center}
 .iconbtn{position:relative;width:44px;height:44px;border-radius:14px;background:var(--navy);display:grid;place-items:center;border:none;cursor:pointer;flex:none;transition:.15s}

@@ -435,3 +435,18 @@ footer.site{background:#F5F5F5;color:#42566B}
 @media(min-width:681px){ .hero .wrap{grid-template-columns:.95fr 1.05fr} }
 .hero-img.composed{overflow:hidden}
 .hero-img.composed img{transform:scale(1.15);transform-origin:50% 100%}
+
+/* about strip: text + photo side by side (no more empty right half, no stray arrow) */
+.aboutstrip .inner{display:grid;grid-template-columns:1.08fr .92fr;gap:52px;align-items:center}
+.aboutstrip .about-photo{width:100%;height:300px;object-fit:cover;object-position:50% 42%;border-radius:24px;display:block}
+@media(max-width:680px){ .aboutstrip .inner{grid-template-columns:1fr;gap:26px} .aboutstrip .about-photo{height:230px} }
+
+/* blog: calmer cards — smaller titles, shorter lines, more air */
+.blog{gap:28px}
+.blogsec .bcard{padding:20px}
+.blogsec .bcard img{height:200px}
+.blogsec .bcard h3{font-size:19.5px;line-height:1.28}
+.blogsec .bcard .bb p{font-size:15px;line-height:1.55}
+.blogsec .btag{font-size:11.5px}
+.blogsec .rmore{font-size:14.5px;font-weight:700;text-decoration:none;margin-top:12px}
+.blogsec .rmore::after{content:" ›"}

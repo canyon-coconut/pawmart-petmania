@@ -516,3 +516,8 @@ section.blk.aboutstrip{padding:56px 0}
 .tb-phone svg{width:14px;height:14px;fill:none;stroke:var(--yellow);stroke-width:2;stroke-linejoin:round}
 .tb-phone:hover{color:var(--yellow)}
 @media(max-width:680px){ .tb-left{display:none} .topin{justify-content:center} }
+
+/* top bar neatness: one line at every width — trim content before it can wrap */
+.tb-left,.tb-hours{white-space:nowrap}
+@media(max-width:900px){ .tb-left{display:none} }
+@media(max-width:680px){ .tb-hours{display:none} }

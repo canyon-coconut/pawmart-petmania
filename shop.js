@@ -207,17 +207,22 @@ document.getElementById('goCheckout').addEventListener('click', () => {
   modal.classList.add('open');
 });
 document.getElementById('closeModal').addEventListener('click', () => modal.classList.remove('open'));
+document.addEventListener('keydown', e => {
+  if(e.key !== 'Escape') return;
+  if(modal.classList.contains('open')){ modal.classList.remove('open'); return; }
+  if(drawer.classList.contains('open')) closeCart();
+});
 modal.addEventListener('click', e => { if(e.target===modal) modal.classList.remove('open'); });
 
 function fieldOK(id, ok){ document.getElementById(id).classList.toggle('invalid', !ok); return ok; }
 document.getElementById('coForm').addEventListener('submit', e => {
   e.preventDefault();
   const name = document.getElementById('inName').value.trim();
-  const phone = document.getElementById('inPhone').value.replace(/[\s-]/g,'');
+  const phone = document.getElementById('inPhone').value.replace(/\D/g,'');
   const addr = document.getElementById('inAddr').value.trim();
   let ok = true;
-  ok = fieldOK('f-name', name.length>=3) && ok;
-  ok = fieldOK('f-phone', /^\+?\d{7,15}$/.test(phone)) && ok;
+  ok = fieldOK('f-name', name.length>=2) && ok;
+  ok = fieldOK('f-phone', phone.length===10 || (phone.length===11 && phone[0]==='1')) && ok;
   ok = fieldOK('f-addr', addr.length>=8) && ok;
   if(!ok) return;
   const t = cartTotals();

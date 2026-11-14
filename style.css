@@ -521,3 +521,27 @@ section.blk.aboutstrip{padding:56px 0}
 .tb-left,.tb-hours{white-space:nowrap}
 @media(max-width:900px){ .tb-left{display:none} }
 @media(max-width:680px){ .tb-hours{display:none} }
+
+/* booking panel (Care page) */
+.bookpanel{background:var(--navy);border-radius:26px;padding:42px;display:grid;grid-template-columns:1fr 1.08fr;gap:42px;box-shadow:var(--shadow)}
+.booktx h2{color:#fff;font-size:32px;margin-bottom:12px}
+.booktx p{color:#C9D9EE;font-weight:600;max-width:42ch}
+.booklist{list-style:none;margin:22px 0;padding:0}
+.booklist li{display:flex;justify-content:space-between;gap:14px;color:#fff;font-weight:700;padding:10px 0;border-bottom:1px dashed rgba(255,255,255,.25)}
+.booklist li span:last-child{color:var(--yellow);white-space:nowrap}
+.bookcall{margin-top:18px}
+.bookcall a{color:var(--yellow);font-weight:800;text-decoration:none}
+.bookcall a:hover{text-decoration:underline}
+.bookcard{background:#fff;border-radius:20px;padding:26px}
+.field select{width:100%;border:2px solid var(--line);border-radius:14px;padding:12px 15px;font:inherit;outline:none;background:#F7FAFD;color:var(--ink)}
+.field select:focus{border-color:var(--sky2);background:#fff}
+.field.invalid select{border-color:#E0655F;background:#FDF3F3}
+.bkrow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.bookcard .field{margin-bottom:14px}
+.bookbtn{width:100%;margin-top:2px}
+.bookfine{font-size:13.5px;color:var(--mut);font-weight:600;margin-top:12px;text-align:center}
+.bookref{font-family:'Baloo 2',cursive;font-weight:700;color:var(--navy);font-size:19px;margin-bottom:10px}
+.bookref strong{font-size:30px;color:var(--yellow-d)}
+#bookDone p{color:#3D4E6B;font-weight:600;margin-bottom:18px}
+@media(max-width:860px){ .bookpanel{grid-template-columns:1fr;padding:28px 22px;gap:26px} }
+@media(max-width:520px){ .bkrow{grid-template-columns:1fr} }

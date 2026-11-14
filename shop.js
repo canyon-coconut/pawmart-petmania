@@ -308,3 +308,34 @@ document.documentElement.classList.add('js');
   watch(document);
   new MutationObserver(function(ms){ ms.forEach(function(m){ m.addedNodes.forEach(function(n){ if(n.nodeType===1){ if(n.classList && n.classList.contains('rv')) io.observe(n); watch(n); } }); }); }).observe(document.body, {childList:true, subtree:true});
 })();
+
+/* ---------- booking (Care page) ---------- */
+const bookForm = document.getElementById('bookForm');
+if(bookForm){
+  const bkDate = document.getElementById('bkDate');
+  bkDate.min = new Date().toISOString().split('T')[0];
+  const bField = (id, ok) => { document.getElementById(id).classList.toggle('invalid', !ok); return ok; };
+  bookForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const svc = document.getElementById('bkService').value;
+    const date = bkDate.value, time = document.getElementById('bkTime').value;
+    const name = document.getElementById('bkName').value.trim();
+    const phoneRaw = document.getElementById('bkPhone').value.trim();
+    const digits = phoneRaw.replace(/\D/g, '');
+    let ok = true;
+    ok = bField('bf-service', !!svc) && ok;
+    ok = bField('bf-date', !!date && date >= bkDate.min) && ok;
+    ok = bField('bf-time', !!time) && ok;
+    ok = bField('bf-name', name.length >= 2) && ok;
+    ok = bField('bf-phone', digits.length === 10 || (digits.length === 11 && digits[0] === '1')) && ok;
+    if(!ok) return;
+    const ref = 'BK-' + Math.floor(1000 + Math.random() * 9000);
+    const when = new Date(date + 'T12:00:00').toLocaleDateString('en-GB', {weekday: 'short', day: 'numeric', month: 'short'});
+    try{ const all = JSON.parse(localStorage.getItem('pawmart_bookings') || '[]'); all.push({ref, svc, date, time, name, phone: phoneRaw, pet: document.getElementById('bkPet').value.trim(), notes: document.getElementById('bkNotes').value.trim()}); localStorage.setItem('pawmart_bookings', JSON.stringify(all)); }catch(err){}
+    document.getElementById('bkRef').textContent = ref;
+    document.getElementById('bkSummary').textContent = 'Thank you, ' + name.split(' ')[0] + '. You have asked for ' + svc + ' on ' + when + ' at ' + time + '. We will call ' + phoneRaw + ' to confirm.';
+    bookForm.style.display = 'none';
+    document.getElementById('bookDone').style.display = 'block';
+  });
+  document.getElementById('bookAgain').addEventListener('click', () => { bookForm.reset(); bookForm.style.display = ''; document.getElementById('bookDone').style.display = 'none'; });
+}

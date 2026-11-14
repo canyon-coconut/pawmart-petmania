@@ -364,7 +364,6 @@ footer.site{background:#F5F5F5;color:#42566B}
 .foot a:hover{color:var(--navy)}
 .foot .logo .lname{color:var(--navy)}
 .footbot{color:#5D7183}
-.uline{background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='12' viewBox='0 0 120 12'><path d='M2 7 C 25 2, 45 12, 68 7 C 88 3, 105 9, 118 6' fill='none' stroke='%23FFD100' stroke-width='4.5' stroke-linecap='round'/></svg>") bottom left / 100% 9px no-repeat;padding-bottom:7px}
 @media(max-width:980px){
   .petgrid{grid-template-columns:repeat(3,1fr)}
   .services.photo-grid{grid-template-columns:repeat(2,1fr)}
@@ -545,3 +544,23 @@ section.blk.aboutstrip{padding:56px 0}
 #bookDone p{color:#3D4E6B;font-weight:600;margin-bottom:18px}
 @media(max-width:860px){ .bookpanel{grid-template-columns:1fr;padding:28px 22px;gap:26px} }
 @media(max-width:520px){ .bkrow{grid-template-columns:1fr} }
+
+/* article pages (From the counter) */
+.article{max-width:780px;margin:0 auto}
+.art-tag{display:inline-block;color:var(--yellow-d);font-weight:800;font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+.article h1{font-size:40px;line-height:1.15;margin:10px 0 12px}
+.article .stand{font-size:18px;color:#3D4E6B;font-weight:600;margin-bottom:22px}
+.art-hero{width:100%;height:360px;object-fit:cover;border-radius:20px;display:block;margin-bottom:26px}
+.article p{color:#3D4E6B;font-weight:600;margin-bottom:16px;font-size:16.5px;line-height:1.65}
+.article h2{font-size:25px;margin:28px 0 10px}
+.article ul{color:#3D4E6B;font-weight:600;margin:0 0 16px 20px;line-height:1.65}
+.art-tip{background:var(--sky);border-radius:16px;padding:18px 20px;margin:24px 0}
+.art-tip p{margin:0}
+.art-tip strong{color:var(--navy)}
+.art-cta{background:var(--navy);border-radius:18px;padding:24px 26px;margin:30px 0 6px;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.art-cta h3{color:#fff;font-size:21px}
+.art-cta p{color:#C9D9EE;margin:4px 0 0;font-size:15px}
+.art-cta .btn{flex:none}
+.keepread{margin-top:38px}
+.keepread h2{font-size:25px;margin-bottom:16px}
+@media(max-width:640px){ .art-hero{height:230px} .article h1{font-size:31px} }

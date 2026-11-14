@@ -564,3 +564,12 @@ section.blk.aboutstrip{padding:56px 0}
 .keepread{margin-top:38px}
 .keepread h2{font-size:25px;margin-bottom:16px}
 @media(max-width:640px){ .art-hero{height:230px} .article h1{font-size:31px} }
+
+.booksteps{margin-top:26px;display:grid;gap:14px}
+.booksteps div{display:flex;gap:12px;align-items:flex-start}
+.booksteps strong{flex:none;width:27px;height:27px;border-radius:50%;background:var(--yellow);color:var(--navy);display:grid;place-items:center;font-family:'Baloo 2',cursive;font-size:15px}
+.booksteps p{margin:0;font-size:15px}
+.bookhours{margin-top:24px}
+.bookhours div{display:flex;justify-content:space-between;gap:14px;color:#fff;font-weight:700;padding:8px 0;border-bottom:1px dashed rgba(255,255,255,.25)}
+.bookhours div span:last-child{color:var(--yellow);white-space:nowrap}
+.bookaddr{margin-top:16px;font-size:14.5px}
